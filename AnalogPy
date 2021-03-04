@@ -11,7 +11,11 @@ def setCountry(x):
 root=Tk()
 root.title('Clock')
 
+style = Style()
+style.configure("BW.TLabel", foreground="lime", background="black", font=("poor richard",20))
+
 lb1=Label(root)
+lb2=Label(root)
 cv=Canvas(root,height=300,width=300)
 
 bt1=Button(root,text='India',command=lambda *args:setCountry("India"))
@@ -43,6 +47,7 @@ def time():
             mins-=60
             hour+=1
     lb1.config(text="{}:{}:{}".format(hour,mins,seconds))
+    lb2.config(text=country,style="BW.TLabel")
     cv.delete('lines')
     cv.delete('ovals')
     ovl=cv.create_oval(0,0,300,300,fill='black')
@@ -66,9 +71,8 @@ def time():
     min_line=cv.create_line(x1,y1,150+(100*math.cos(math.radians(min_angle))),150+(100*math.sin(math.radians(min_angle))),fill="lime",arrow=LAST,width=2)
     hr_line=cv.create_line(x1,y1,150+(70*math.cos(math.radians(hour_angle))),150+(70*math.sin(math.radians(hour_angle))),fill="lime",arrow=LAST,width=2)
     lb1.after(1000,time)
-    
-
 lb1.grid(row=0,column=0)
+lb2.grid(row=0,column=2)
 cv.grid(row=1,column=0)
 bt1.grid(row=1,column=1)
 bt2.grid(row=1,column=2)
