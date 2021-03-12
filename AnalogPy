@@ -46,7 +46,7 @@ def time():
         while mins>=60:
             mins-=60
             hour+=1
-    lb1.config(text="{}:{}:{}".format(hour,mins,seconds))
+    lb1.config(text="{}:{}:{}".format(hour,mins,seconds),style="BW.TLabel")
     lb2.config(text=country,style="BW.TLabel")
     cv.delete('lines')
     cv.delete('ovals')
@@ -73,10 +73,10 @@ def time():
     lb1.after(1000,time)
 lb1.grid(row=0,column=0)
 lb2.grid(row=0,column=2)
-cv.grid(row=1,column=0)
-bt1.grid(row=1,column=1)
-bt2.grid(row=1,column=2)
-bt3.grid(row=1,column=3)
+cv.grid(row=2,columnspan=3,column=0)
+bt1.grid(row=1,column=0)
+bt2.grid(row=1,column=1)
+bt3.grid(row=1,column=2)
 
 
 time()
