@@ -10,13 +10,14 @@ def setCountry(x):
     #print(country)
 root=Tk()
 root.title('Clock')
+root.configure(bg="black")
 
 style = Style()
 style.configure("BW.TLabel", foreground="lime", background="black", font=("poor richard",20))
 
 lb1=Label(root)
 lb2=Label(root)
-cv=Canvas(root,height=300,width=300)
+cv=Canvas(root,height=300,width=300,bg="#637066")
 
 bt1=Button(root,text='India',command=lambda *args:setCountry("India"))
 bt2=Button(root,text='London',command=lambda *args:setCountry("London"))
@@ -24,10 +25,10 @@ bt3=Button(root,text='California',command=lambda *args:setCountry("California"))
 def time():
     Time=(strftime('%H:%M:%S').split(':'))
     hour,mins,seconds=[int(t) for t in Time]
-    if hour>=12:
+    if hour>12:
         hour-=12
     if country=="London":
-        hour-=5
+        hour-=6
         mins-=30
         if mins<=0:
             mins+=60
@@ -37,7 +38,7 @@ def time():
             mins-=60
             hour+=1
     elif country=="California":
-        hour-=13
+        hour-=14
         mins-=30
         while hour<=0:
             hour+=12
